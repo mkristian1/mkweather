@@ -21,10 +21,11 @@ export default class Weather extends Component {
 
 
     render() {
-        const { city, temp, errors } = this.props;
+        const { city, temp, icon, errors } = this.props;
         
+        const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`
         const isErrors = errors ? <Errors /> : null;
-        const cityData = !errors ? city : null; 
+        const cityName = !errors ? city : null; 
         const tempData = !errors ? temp : null; 
 
         return (
@@ -42,8 +43,9 @@ export default class Weather extends Component {
                     </form>
                 </div>
                 {isErrors}
-                <h2>City: {cityData}</h2>
+                <h2>City: {cityName}</h2>
                 <h2>Temp: {tempData}&#176;</h2>
+                <p><img src={iconUrl} alt={cityName} /></p>
             </div>
         );
     };
