@@ -13,6 +13,7 @@ export default class WeatherApp extends Component {
 
   state = {
     city: 'Dilijan',
+    country: null,
     temp: null,
     icon: null,
     loader: true,
@@ -32,8 +33,11 @@ export default class WeatherApp extends Component {
     this.weatherData.getData(this.state.city).then(data => {
       const temp = Math.floor(data.main.temp - 273.15);
       const icon = data.weather[0].icon;
+      const country = data.sys.country;
+
       this.setState({
         temp,
+        country,
         icon
       });
     }).catch(() => this.setState({ errors: true })
@@ -41,21 +45,23 @@ export default class WeatherApp extends Component {
   }
 
   getCity = (city) => {
+    const capFirstCity = city.charAt(0).toUpperCase() + city.slice(1);
     this.setState({
-      city,
+      city: capFirstCity,
       errors: false
     })
   };
 
   render() {
 
-    const { city, temp, icon, errors } = this.state;
+    const { city, country, temp, icon, errors } = this.state;
 
     return (
       <div className="weather-app">
         <Weather
           getCity={this.getCity}
           city={city}
+          country={country}
           icon={icon}
           temp={temp}
           errors={errors} />
