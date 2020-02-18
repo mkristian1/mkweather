@@ -19,7 +19,8 @@ export default class WeatherApp extends Component {
     temp: null,
     icon: null,
     loader: true,
-    errors: false
+    errors: false,
+    name: ''
   }
   componentDidMount() {
     this.updateData();
@@ -51,21 +52,29 @@ export default class WeatherApp extends Component {
     const capFirstCity = city.charAt(0).toUpperCase() + city.slice(1);
     this.setState({
       city: capFirstCity,
-      errors: false
+      errors: false,
+      name: ''
     })
   };
 
+  easterEgg = (name) => {
+    this.setState({
+      name
+    })
+  }
+
   render() {
 
-    const { city, country, temp, icon, loader, errors } = this.state;
-
+    const { city, country, name, temp, icon, loader, errors } = this.state;
+    
     return (
       <div className="weather-app">
         <div className="weather text-center mt-3">
           <Header />
-          <Form getCity={this.getCity} city={city} />
+          <Form getCity={this.getCity} easterEgg={this.easterEgg} city={city} />
           <WeatherData
             city={city}
+            name={name}
             country={country}
             icon={icon}
             temp={temp}

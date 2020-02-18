@@ -15,7 +15,17 @@ export default class Form extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.getCity(this.state.label);
+
+        if (this.state.label === "Mos" || this.state.label === "Hayk" ||
+            this.state.label === "Grish" || this.state.label === "Rub" ||
+            this.state.label === "Kris" || this.state.label === "Yur"
+        ) {
+            this.props.easterEgg(this.state.label);
+        } else {
+            this.props.getCity(this.state.label);
+        }
+
+
     }
 
     render() {
