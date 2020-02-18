@@ -1,4 +1,4 @@
-export default class WeatherData {
+export default class OpenWeather {
 
     // Example request api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}
     _apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import WeatherData from './services/open-weather';
-import Weather from './component/weather';
+import OpenWeather from './services/open-weather';
+import Header from './component/header';
+import Form from './component/form';
+import WeatherData from './component/weather-data';
 import './app.css';
 
 
@@ -9,7 +11,7 @@ export default class WeatherApp extends Component {
   //console.log(Math.floor(res.main.temp - 273.15));
   //weatherBase().then(temp => console.log(temp.main.temp));
 
-  weatherData = new WeatherData();
+  openWeather = new OpenWeather();
 
   state = {
     city: 'Dilijan',
@@ -30,7 +32,7 @@ export default class WeatherApp extends Component {
   }
 
   updateData = () => {
-    this.weatherData.getData(this.state.city).then(data => {
+    this.openWeather.getData(this.state.city).then(data => {
       const temp = Math.floor(data.main.temp - 273.15);
       const icon = data.weather[0].icon;
       const country = data.sys.country;
@@ -38,7 +40,8 @@ export default class WeatherApp extends Component {
       this.setState({
         temp,
         country,
-        icon
+        icon,
+        loader: false
       });
     }).catch(() => this.setState({ errors: true })
     );
@@ -54,17 +57,21 @@ export default class WeatherApp extends Component {
 
   render() {
 
-    const { city, country, temp, icon, errors } = this.state;
+    const { city, country, temp, icon, loader, errors } = this.state;
 
     return (
       <div className="weather-app">
-        <Weather
-          getCity={this.getCity}
-          city={city}
-          country={country}
-          icon={icon}
-          temp={temp}
-          errors={errors} />
+        <div className="weather text-center mt-3">
+          <Header />
+          <Form getCity={this.getCity} city={city} />
+          <WeatherData
+            city={city}
+            country={country}
+            icon={icon}
+            temp={temp}
+            loader={loader}
+            errors={errors} />
+        </div>
       </div>
     );
   };

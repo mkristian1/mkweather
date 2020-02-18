@@ -1,4 +1,10 @@
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 1.5rem;
     color: aliceblue;
     background: #FC466B;
     /* fallback for old browsers */

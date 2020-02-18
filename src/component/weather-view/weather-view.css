@@ -1,0 +1,28 @@
+.weather {
+  font-family: Comic Sans MS, Roboto;
+}
+
+.weather-view {
+  background: rgba(0, 0, 0, .5);
+  display: inline-block;
+  padding: 0 10px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .5);
+}
+
+.weather-view:hover {
+  background: #12121a;
+}
+
+.weather-view span {
+  font-size: 2rem;
+  color: #f5f5f5;
+  cursor: pointer;
+}
+
+.weather-view span span {
+  margin-left: 40px;
+}
+
+.weather-view span img {
+  max-width: 60px;
+}
