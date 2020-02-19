@@ -1,3 +1,9 @@
+@media screen and (max-width: 769px) {
+  .form__group {
+    width: 70% !important;
+  }
+}
+
 
 .form__group {
     position: relative;

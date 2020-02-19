@@ -8,11 +8,9 @@ const EasterEgg = ({ name }) => {
         case "Mos":
             icon = 'fas fa-broadcast-tower';
             break;
-
         case "Hayk":
             icon = 'fas fa-futbol';
             break;
-
         case "Grish":
             icon = 'fas fa-dumbbell';
             break;

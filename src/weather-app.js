@@ -69,7 +69,7 @@ export default class WeatherApp extends Component {
     
     return (
       <div className="weather-app">
-        <div className="weather text-center mt-3">
+        <div className="weather text-center">
           <Header />
           <Form getCity={this.getCity} easterEgg={this.easterEgg} city={city} />
           <WeatherData
