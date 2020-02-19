@@ -2,5 +2,7 @@
 
 A weather app done with React. I use OpenWeatherAPi to get data.
 
+![alt text](http://horizon1.ru/github/mkweather.png "MK Weather")
 
-[live Demo](https://mkristian1.github.io/mkweather/)
+
+[Live Demo](https://mkristian1.github.io/mkweather/)
